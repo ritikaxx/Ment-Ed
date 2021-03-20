@@ -91,6 +91,7 @@ with them. Hire mentors based on their skills.
 # Skills/Certification tracking
 ◦ A test/exam section to verify their skills and gain points to make it easy
 for the recruiters/mentors. Progress details of each course/test.
+
 ◦ Assessments and Survey/polls- Learners could submit a writing sample
 or upload results to a question. Surveys and polls put less pressure on
 your members, but still give you valuable insight into how you present
@@ -100,28 +101,33 @@ the material.
 ◦ People can connect to other like minded people through this community
 option.Students can post about the project idea they need assistance and
 will get their mentors who are experienced for their projects or can get
-team members from student community.◦ Mentors can get help in the form of interns for their researrch based
+team members from student community.
+
+◦ Mentors can get help in the form of interns for their researrch based
 projects from the commom community. Help seekers can rate/review the
 help which helps in the point system.
 
 # Point System 
-mantained for both students and mentors. Upon reaching a
+It is mantained for both students and mentors. Upon reaching a
 certain level of points in the scoreboard and if the user have atleast 2 verfied
 skils, they can connect with recruiters and request for a meeting with them.
 
 # Personalized Learning Path -
 ▪ Timetable- Users can maintain a timetable for all the courses and
 tests and get reminders before the scheduled time.
+
 ▪ Tracking bar / Suggestions/ Course Add/Drop etc.
+
 ▪ E-book Library- We are planning to add this feature of ebooks which
 will be accessible to all mentors and students. Here students/mentors
 can also add ebooks of their choice.
 
 # Gamification / Social Learning- 
-Gamification features can turn
-learning into a friendly competition. It will engage learners, speed them
+Gamification features can turn learning into a friendly competition. It will engage learners, speed them
 through the modules, and increase compliance.
+
 ▪ Prizes, Badges , Offers , Rewards etc.
+
 ▪ Event passes, vouchers, scratch cards etc.
 
 # CHATBOT -
