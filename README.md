@@ -100,9 +100,3 @@ interview with them.
 •
 Payment system for accessing mentors, extra facilities etc
 
-Link for Video Demo of Portal -
-https://youtu.be/pLaqWLM_JCQ
-
-Link for ppt-
-https://youtu.be/eQ0ZMVkv9Os
-
