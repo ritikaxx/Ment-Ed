@@ -61,8 +61,8 @@ additional source of income and a chance to help their mentees.
 # MAJOR CONTRIBUTIONS-
 • Homepage for login/registration of student, mentors/employees and
 recruiters and the registered information is stored in a database.
-# • STUDENT SIDE
-◦ Student can can see the score board, the list of recent posts he
+# • USER INTERACTION / MAIN WEBPAGE
+◦1-Student can can see the score board, the list of recent posts he
 subscribed to and the upcoming meetings for classes/interviews for
 internship/job he applied for on the dashboard.
 ◦ Can add questions/doubts to which other students/mentors can
@@ -89,18 +89,60 @@ a meeting with them.
 ◦ Apply for jobs to recruiters according to skills and points, can hire
 interns.
 •
-# RECRUITORS SECTION
+2- Mentor Section
+◦ Register and Login , point system, community system, Apply for jobs to
+recruiters according to skills and points, can hire interns.
+3- RECRUITERS SECTION
 ◦ Can approve meetings with students/mentors. The opportunity to
-connect with our top-performing candidates and set one to one
-interview with them.
-◦ Hire mentors based on their skills.
-•
-# CHATBOT
-◦ A chatbot to provide assistance and support to users.
-◦ Access website, one to one talk, search questions etc
-◦ Can seek professional counselling.
-◦ Can create common chat rooms.
-•
-Payment system for accessing mentors, extra facilities etc
+connect with our top-performing candidates and set one to one interview
+with them. Hire mentors based on their skills.
 
+# Skills/Certification tracking
+◦ A test/exam section to verify their skills and gain points to make it easy
+for the recruiters/mentors. Progress details of each course/test.
+◦ Assessments and Survey/polls- Learners could submit a writing sample
+or upload results to a question. Surveys and polls put less pressure on
+your members, but still give you valuable insight into how you present
+the material.
+
+# Community Section / Online Section
+◦ People can connect to other like minded people through this community
+option.Students can post about the project idea they need assistance and
+will get their mentors who are experienced for their projects or can get
+team members from student community.◦ Mentors can get help in the form of interns for their researrch based
+projects from the commom community. Help seekers can rate/review the
+help which helps in the point system.
+
+# Point System 
+mantained for both students and mentors. Upon reaching a
+certain level of points in the scoreboard and if the user have atleast 2 verfied
+skils, they can connect with recruiters and request for a meeting with them.
+
+# Personalized Learning Path -
+▪ Timetable- Users can maintain a timetable for all the courses and
+tests and get reminders before the scheduled time.
+▪ Tracking bar / Suggestions/ Course Add/Drop etc.
+▪ E-book Library- We are planning to add this feature of ebooks which
+will be accessible to all mentors and students. Here students/mentors
+can also add ebooks of their choice.
+
+# Gamification / Social Learning- 
+Gamification features can turn
+learning into a friendly competition. It will engage learners, speed them
+through the modules, and increase compliance.
+▪ Prizes, Badges , Offers , Rewards etc.
+▪ Event passes, vouchers, scratch cards etc.
+
+# CHATBOT -
+Guides users about Interface, directions to use site , for proper
+functioning, one to one meet, seek professional counselling, create common
+chat rooms etc.
+
+# E-commerce and subscriptions
+for accessing mentors, extra facilities etc.
+◦ To complete a course or learning module, users provide their email
+address, make a one-time payment, or agree to a monthly subscription.
+◦ For internships/ Job applications /rewards – Payment system
+
+# Model- Prototype Model 
 
