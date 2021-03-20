@@ -3,7 +3,8 @@ An E-learning web portal for students, mentors and recruiters!
 
 # PPT of IDEA - Devspace Ment-ED review2.pdf (in files above)
 
-#Video explaination of Idea and prototype
+Video explaination of Idea and prototype
+
 https://youtu.be/REPcNRVjuUQ
 
 Prototype-  
@@ -154,7 +155,8 @@ address, make a one-time payment, or agree to a monthly subscription.
 
 # Model- Prototype Model 
 
-#TEAM
+# TEAM
+
 RITIKA SINGH
 
 SAURABH SINGH
