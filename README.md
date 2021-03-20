@@ -33,6 +33,7 @@ top-performing candidates (who have passed our skill verification test). Thus
 instead of taking the hazzle of going through long process of hiring, the
 recruiters can go through the handful of potential candidates on this portal by
 accepting to connect with them.
+
 # NOVELTY-
 1. Students can directly intern under their own mentors and after passing
 particular test/level they can apply for job with some of their known recruiters
@@ -52,46 +53,33 @@ openings in their firm.
 5. A community maintained for similar minded people like Student community,
 Employer community, Recruiter community and a common platform to
 connect all three.
+
 # BUSINESS ASPECT-
 1. This will connect all three students, mentors and recruiter at a single
 place.
 2. Students will get their mentors easily and fast.3. Effective Employee Onboarding :Mentors/ex employers can get an
 additional source of income and a chance to help their mentees.
 4. Fast recruitment process as recruiters can shortlist top candidate.
+5. 
 # MAJOR CONTRIBUTIONS-
 • Homepage for login/registration of student, mentors/employees and
 recruiters and the registered information is stored in a database.
-# • USER INTERACTION / MAIN WEBPAGE
-◦1-Student can can see the score board, the list of recent posts he
+
+# USER INTERACTION / MAIN WEBPAGE
+1- STUDENT
+◦ Student can can see the score board, the list of recent posts he
 subscribed to and the upcoming meetings for classes/interviews for
 internship/job he applied for on the dashboard.
+
 ◦ Can add questions/doubts to which other students/mentors can
-answer/review/bookmark questions for future reference. Point
-system for each reply related to question.
-◦ Manage timetable according to their schedule.
-◦ A test section to verify their skills and gain points to make it easy for
-the recruiters/mentors. Progress details of each course/test.
-• Community Section
-◦ People can connect to other like minded people through this
-community option.
-◦ Students can post about the project idea they need assistance and
-will get their mentors who are experienced for their projects or can
-get team members from student community.
-◦ Mentors can get help in the form of interns for their researrch
-based projects from the commom community.
-◦ Help seekers can rate/review the help which helps in the point
-system.
-• Point System mantained for both students and mentors. Upon
-reaching a certain level of points in the scoreboard and if the user have
-atleast 2 verfied skils, they can connect with recruiters and request for
-a meeting with them.
-• Mentor Section◦ Register and Login , point system, community system,
-◦ Apply for jobs to recruiters according to skills and points, can hire
-interns.
-•
+answer/review/bookmark questions for future reference. Point system
+for each reply related to question. Manage timetable according to their
+schedule.
+
 2- Mentor Section
 ◦ Register and Login , point system, community system, Apply for jobs to
 recruiters according to skills and points, can hire interns.
+
 3- RECRUITERS SECTION
 ◦ Can approve meetings with students/mentors. The opportunity to
 connect with our top-performing candidates and set one to one interview
