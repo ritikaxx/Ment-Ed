@@ -1,7 +1,7 @@
 # Ment-Ed
 An E-learning web portal for students, mentors and recruiters!
 
-# PPT of IDEA - Devspace Ment-ED2.pdf (in files above)
+# PPT of IDEA - Devspace Ment-ED review2.pdf (in files above)
 
 
 # MOTIVATION-
