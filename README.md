@@ -18,15 +18,18 @@ to society by helping the younger students out there and earn money.
 studies and they spend a lot of time on internet finding the right resources
 and solutions even for a small issue. It would be a great help for students to
 get a mentor for helping them to develop skills and project.
+
 # PROBLEM STATEMENT-
 1- Our E-learning portal gives students an opportunity to connect to mentors
 from different parts of the world and to learn from their experiences. It will
 also works as a peer to peer network, that lets students help each other out
 through a community of similar interest.
+
 2. This portal provides ex-employers with an opportunity to earn an
 additional income and a chance to help the young students and developerswho are seeking their help. This would also help them sharpen/revise their
 skills. Also through the platform top-performing candidates, gets an
 opportunity to land in an interview with a recruiter of their choice.
+
 3. Recruiters find to hard to find the right candidates from the plethora of
 applicants. Our Portal provides recruiters the opportunity to connect with our
 top-performing candidates (who have passed our skill verification test). Thus
@@ -59,8 +62,8 @@ connect all three.
 place.
 2. Students will get their mentors easily and fast.3. Effective Employee Onboarding :Mentors/ex employers can get an
 additional source of income and a chance to help their mentees.
-4. Fast recruitment process as recruiters can shortlist top candidate.
-5. 
+3. Fast recruitment process as recruiters can shortlist top candidate.
+
 # MAJOR CONTRIBUTIONS-
 • Homepage for login/registration of student, mentors/employees and
 recruiters and the registered information is stored in a database.
