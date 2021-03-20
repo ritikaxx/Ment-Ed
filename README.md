@@ -3,10 +3,10 @@ An E-learning web portal for students, mentors and recruiters!
 
 # PPT of IDEA - Devspace Ment-ED review2.pdf (in files above)
 
-# Prototype-  
+Prototype-  
 https://www.figma.com/proto/amk9eOZtL3O6tonM9KL6dq/Untitled?node-id=38%3A0&scaling=min-zoom
 
-# Workinf Website demo link
+Working Website demo link
 https://youtu.be/7IROfjPt4pk
 
 
