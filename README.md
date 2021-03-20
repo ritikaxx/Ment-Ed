@@ -1,6 +1,9 @@
 # Ment-Ed
 An E-learning web portal for students, mentors and recruiters!
 
+# PPT 0f IDEA of project is given above
+
+
 # MOTIVATION-
 1. The recent COVID pandemic has disrupted many sectors, especially the
 educational and industrial sectors. The enormous number of layoffs due to
@@ -99,4 +102,5 @@ interview with them.
 ◦ Can create common chat rooms.
 •
 Payment system for accessing mentors, extra facilities etc
+
 
