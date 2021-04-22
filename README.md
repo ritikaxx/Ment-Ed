@@ -1,165 +1,217 @@
-# Ment-Ed
-An E-learning web portal for students, mentors and recruiters!
+# Mentr.me
 
-# PPT of IDEA - Devspace Ment-ED review2.pdf (in files above)
+The recent COVID pandemic has disrupted many sectors, especially the educational and industrial sectors. The enormous number of layoffs due to COVID19 and difficulties faced by students due to the closing down of their institutes inspired us to do something about it
 
-Video explaination of Idea and prototype-
+Mentr.me brings the two sectors together to better equip them for a competitive job market. With their verified credentials, now the ex-employees can upgrade their skills by mentoring students and in-turn get noticed by recruiters! Students get to work on hands-on projects under these skilled mentors to thrive in a competitive job market.
 
-https://youtu.be/REPcNRVjuUQ
+Mentors earn a small amount as a reward and gain points for helping out students with their projects. Top performers get to have a 1:1 virtual coffee chat with a recruiter.
 
-Prototype-  
+Students can verify their skills by taking our assessments and earn scratchcards to win tickets to global conferences! Students are also encouraged to help out their peers and gain points to get referrals!
 
-https://www.figma.com/proto/amk9eOZtL3O6tonM9KL6dq/Untitled?node-id=38%3A0&scaling=min-zoom
-
-Working Website demo link-
-
-https://youtu.be/7IROfjPt4pk
+Recruiters get to network with potential candidates with proven skills as demonstrated by their mentorships.
 
 
-# MOTIVATION-
-1. The recent COVID pandemic has disrupted many sectors, especially the
-educational and industrial sectors. The enormous number of layoffs due to
-COVID19 and difficulties faced by students due to the closing down of their
-institutes inspired us to do something about providing users with the best
-opportunities virtually.
-2. A lot of employers have lost their job due to the recent COVID pandemic. They
-spend hours surfing the web to find the right job and to get an additional
-source of income. This lockdown also provides them ample time to give back
-to society by helping the younger students out there and earn money.
-3. Students find it difficult during lockdown to have proper mentorship regarding
-studies and they spend a lot of time on internet finding the right resources
-and solutions even for a small issue. It would be a great help for students to
-get a mentor for helping them to develop skills and project.
+#### Demo : ```https://youtu.be/ivRNlaFi8yY```
 
-# PROBLEM STATEMENT-
-1- Our E-learning portal gives students an opportunity to connect to mentors
-from different parts of the world and to learn from their experiences. It will
-also works as a peer to peer network, that lets students help each other out
-through a community of similar interest.
 
-2. This portal provides ex-employers with an opportunity to earn an
-additional income and a chance to help the young students and developerswho are seeking their help. This would also help them sharpen/revise their
-skills. Also through the platform top-performing candidates, gets an
-opportunity to land in an interview with a recruiter of their choice.
+## Potential Users
+- Students- who are overwhelmed with the plethora of online resources and who needs a helping hand
+- Ex employers - who are looking for a platform to showcase their skills and get a chance to land on a job
+- Recruiters - who are tired of looking through 1000's of applicants and are unable to find a right candidate for the post 
 
-3. Recruiters find to hard to find the right candidates from the plethora of
-applicants. Our Portal provides recruiters the opportunity to connect with our
-top-performing candidates (who have passed our skill verification test). Thus
-instead of taking the hazzle of going through long process of hiring, the
-recruiters can go through the handful of potential candidates on this portal by
-accepting to connect with them.
+### Workflow of the poduct
 
-# NOVELTY-
-1. Students can directly intern under their own mentors and after passing
-particular test/level they can apply for job with some of their known recruiters
-based on a point system.
-2. Users can post about the project idea they need assistance/help for (or any
-other issue they want help in) . Other users experienced in the related
-technologies can choose to work on these projects/issues as a team member
-or as a mentor and can review the progress using this portal.
-3. Users can maintain a timetable for all the courses and tests and get reminders
-before the scheduled time. They can also get their skills verified by taking skill
-tests and if they perform well, they receive amazing gifts for like event passes,
-vouchers, scratch cards etc.
-4. Recruiters can look into shortlisted top candidate's/employers profile who
-applied and accept to connect with these potential candidates. And if
-convinced, they can directly offer an interview for any of the current job
-openings in their firm.
-5. A community maintained for similar minded people like Student community,
-Employer community, Recruiter community and a common platform to
-connect all three.
+# SECTION 1
 
-# BUSINESS ASPECT-
-1. This will connect all three students, mentors and recruiter at a single
-place.
-2. Students will get their mentors easily and fast.3. Effective Employee Onboarding :Mentors/ex employers can get an
-additional source of income and a chance to help their mentees.
-3. Fast recruitment process as recruiters can shortlist top candidate.
+The user first register and logs into the app
+![1](https://user-images.githubusercontent.com/43414928/97395011-02aa1380-190a-11eb-931a-3578e47b99bf.png)
+![2](https://user-images.githubusercontent.com/43414928/97395016-0342aa00-190a-11eb-98cc-97d8244b4f7a.png)
 
-# MAJOR CONTRIBUTIONS-
-• Homepage for login/registration of student, mentors/employees and
-recruiters and the registered information is stored in a database.
+<br/>
 
-# USER INTERACTION / MAIN WEBPAGE
-1- STUDENT
-◦ Student can can see the score board, the list of recent posts he
-subscribed to and the upcoming meetings for classes/interviews for
-internship/job he applied for on the dashboard.
+In the home screen, the user can see the score board, the list of recent posts and the upcoming meetings
+![3](https://user-images.githubusercontent.com/43414928/97395019-0473d700-190a-11eb-9345-2fad697240de.png)
+![4](https://user-images.githubusercontent.com/43414928/97395020-05a50400-190a-11eb-9b6d-467c744174da.png)
 
-◦ Can add questions/doubts to which other students/mentors can
-answer/review/bookmark questions for future reference. Point system
-for each reply related to question. Manage timetable according to their
-schedule.
+<br/>
 
-2- Mentor Section
-◦ Register and Login , point system, community system, Apply for jobs to
-recruiters according to skills and points, can hire interns.
+Users, usually students, post about the project idea they need assistance for  (or any other issue they want help in) with the proposed reward points.
+![5](https://user-images.githubusercontent.com/43414928/97395023-063d9a80-190a-11eb-8dff-363178832f61.png)
 
-3- RECRUITERS SECTION
-◦ Can approve meetings with students/mentors. The opportunity to
-connect with our top-performing candidates and set one to one interview
-with them. Hire mentors based on their skills.
+<br/>
 
-# Skills/Certification tracking
-◦ A test/exam section to verify their skills and gain points to make it easy
-for the recruiters/mentors. Progress details of each course/test.
+Other users experienced in the related technologies(professionals) can choose to work on these projects/issues and bid these projects by commenting on why they are a good fit and points required for the task. 
+![a](https://user-images.githubusercontent.com/43414928/97395685-7b5d9f80-190b-11eb-86c7-5174908eee9f.png)
+![b](https://user-images.githubusercontent.com/43414928/97395690-7d276300-190b-11eb-9583-459989545415.png)
+![c](https://user-images.githubusercontent.com/43414928/97395691-7dbff980-190b-11eb-8079-640fa1dc2a6b.png)
+![d](https://user-images.githubusercontent.com/43414928/97395694-7e589000-190b-11eb-961f-9d4c133fd432.png)
 
-◦ Assessments and Survey/polls- Learners could submit a writing sample
-or upload results to a question. Surveys and polls put less pressure on
-your members, but still give you valuable insight into how you present
-the material.
+<br/>
+<br/>
 
-# Community Section / Online Section
-◦ People can connect to other like minded people through this community
-option.Students can post about the project idea they need assistance and
-will get their mentors who are experienced for their projects or can get
-team members from student community.
+Help-seekers can then choose someone from those who responded to their particular issue as their mentor, assign the task to them and work with them on the project/issue they have. 
+![e](https://user-images.githubusercontent.com/43414928/97395766-a7792080-190b-11eb-931e-d3de84b3568e.png)
 
-◦ Mentors can get help in the form of interns for their researrch based
-projects from the commom community. Help seekers can rate/review the
-help which helps in the point system.
+<br/>
 
-# Point System 
-It is mantained for both students and mentors. Upon reaching a
-certain level of points in the scoreboard and if the user have atleast 2 verfied
-skils, they can connect with recruiters and request for a meeting with them.
+The users can view all their activities ie the issues that they have raised and the issues that they have committed to in the 'activities' section.  The status of the issue can either be pending, asssigned or solved
+![6](https://user-images.githubusercontent.com/43414928/97395864-e018fa00-190b-11eb-9035-0c39dfb221ea.png)
+![7](https://user-images.githubusercontent.com/43414928/97395866-e1e2bd80-190b-11eb-95c4-bc15e8e7ab9d.png)
+![8](https://user-images.githubusercontent.com/43414928/97395867-e27b5400-190b-11eb-8eee-6d07dc3b5416.png)
 
-# Personalized Learning Path -
-▪ Timetable- Users can maintain a timetable for all the courses and
-tests and get reminders before the scheduled time.
+<br/>
+<br/>
 
-▪ Tracking bar / Suggestions/ Course Add/Drop etc.
 
-▪ E-book Library- We are planning to add this feature of ebooks which
-will be accessible to all mentors and students. Here students/mentors
-can also add ebooks of their choice.
+After successful completion of the task, points are rewarded to the mentors by the mentees.
+![9](https://user-images.githubusercontent.com/43414928/97396079-5d446f00-190c-11eb-9d00-a6710994f8a5.png)
 
-# Gamification / Social Learning- 
-Gamification features can turn learning into a friendly competition. It will engage learners, speed them
-through the modules, and increase compliance.
+<br/>
 
-▪ Prizes, Badges , Offers , Rewards etc.
 
-▪ Event passes, vouchers, scratch cards etc.
+Users can also get their skills verified by taking skill tests and if they perform well, they receive amazing gifts for like event passes, vouchers, Spotify playlists in the form of a scratch card. 
 
-# CHATBOT -
-Guides users about Interface, directions to use site , for proper
-functioning, one to one meet, seek professional counselling, create common
-chat rooms etc.
+![10](https://user-images.githubusercontent.com/43414928/97396393-01c6b100-190d-11eb-906e-9dc953cf4f08.png)
+![11](https://user-images.githubusercontent.com/43414928/97396395-025f4780-190d-11eb-8331-2b60102be421.png)
+![12](https://user-images.githubusercontent.com/43414928/97396397-02f7de00-190d-11eb-8285-d0410e4d628d.png)
+![13](https://user-images.githubusercontent.com/43414928/97396398-03907480-190d-11eb-85a5-c6d41527c182.png)
+![14](https://user-images.githubusercontent.com/43414928/97396401-04290b00-190d-11eb-8453-d6ae7e3cafee.png)
+![15](https://user-images.githubusercontent.com/43414928/97396402-04c1a180-190d-11eb-928f-2f14babdba98.png)
+![16](https://user-images.githubusercontent.com/43414928/97396390-fffced80-190c-11eb-8969-5f6ca4c682ea.png)
+![7](https://user-images.githubusercontent.com/43414928/95669445-7f18c480-0b9e-11eb-91da-abe69a5a8c57.png)
 
-# E-commerce and subscriptions
-for accessing mentors, extra facilities etc.
-◦ To complete a course or learning module, users provide their email
-address, make a one-time payment, or agree to a monthly subscription.
-◦ For internships/ Job applications /rewards – Payment system
+<br/>
+<br/>
+<br/>
 
-# Model- Prototype Model 
 
-# TEAM
+Upon reaching a certain level of points in the scoreboard and if the user have atleast 1 verfied skils, they( usually job seekers like laid-off professionals ) can connect with recruiters and request for a meeting with them. 
 
-RITIKA SINGH
+![18](https://user-images.githubusercontent.com/43414928/97396122-73eac600-190c-11eb-9912-c520ca0ff028.png)
+![19](https://user-images.githubusercontent.com/43414928/97396118-71886c00-190c-11eb-95ed-ce61ff007295.png)
 
-SAURABH SINGH
+<br/>
+<br/>
+<br/>
+<br/>
 
-ANSHUL OLA
 
+# SECTION 2 : Recruiters
+
+The recruiters first register and logs into the platform
+
+
+![20](https://user-images.githubusercontent.com/43414928/97396244-b1e7ea00-190c-11eb-8472-141749303752.png)
+![21](https://user-images.githubusercontent.com/43414928/97396250-b3191700-190c-11eb-8d08-b1bf10ded356.png)
+
+<br/>
+
+
+In the home page, the recruiter can see all their upcoming meetings
+![22](https://user-images.githubusercontent.com/43414928/97396592-6550de80-190d-11eb-94d2-40594586bf93.png)
+![23](https://user-images.githubusercontent.com/43414928/97396595-66820b80-190d-11eb-81af-a2cab1fac726.png)
+
+<br/>
+
+
+Recruiters can look into top performing candidate's profile and accept to connect with these potential candidates. And if convinced, they can offer an interview for any of the current job openings in their firm. 
+
+![24](https://user-images.githubusercontent.com/43414928/97396496-363a6d00-190d-11eb-8e06-401f78b2b88b.png)
+![25](https://user-images.githubusercontent.com/43414928/97396499-389cc700-190d-11eb-8b9c-900eb82ed781.png)
+
+<br/>
+
+
+ ### Chatbot 
+ 
+The new reality of prolonged quarantine period and lack of socialization with other family members, friends, and managing the fear of contracting the virus and worry about people close to us who are particularly vulnerable, are all challenging for each one of us. A lot of students and ex-employers are stressed and at a verge of depression, More than 50% of those suffering from mental health issues are not seeking treatment, due to social stigma. This present environment in the world has increased stress and anxiety amongst the people.
+
+We also implemented a chatbot to provide assistance and support for our users
+
+![1](https://user-images.githubusercontent.com/43414928/97396837-e4dead80-190d-11eb-83e3-975d94942775.png)
+![2](https://user-images.githubusercontent.com/43414928/97396830-e019f980-190d-11eb-80ca-b2031c0815fd.png)
+
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+
+
+# Why Mentr.me: The innovation and social impact
+
+**1. Students**
+
+As students, we often find it difficult to find the resource from the plethora of online content. We find hours surfing through the web, to find a solution for a small issue. It would be a great help for students like us to get a mentor for helping us to develop a project at an affordable price. Since most of our educational institutes are closed, we find it difficult to find someone to help us out
+
+Mentr.me gives students an opportunity to connect to mentors from different parts of the part, at an affordable price. Mentr.me also works as a peer to peer network, that lets students help each other out. 
+
+**2. Ex employers**
+
+A lot of employers have lost their job due to the recent COVID pandemic. They spend hours surfing the web to find the right job and to get an additional source of income. This lockdown also provides them ample time to give back to society by helping the younger mentees out there
+
+Mentr.me provides them with an opportunity to earn an additional income and a chance to help the young developers who are seeking their help. This would also help them sharpen/revise their skills. Also through the platform top-performing candidates,  gets an opportunity to land in an interview with a recruiter of their choice
+
+**3. Recruiters**
+  
+Recruiters find to hard to find the right candidates from the plethora of applicants. 
+
+Mentr.me provides recruiters the opportunity to connect with our top-performing candidates (who have passed our skill verification test). Thus instead of taking the hazzle of going through 1000s of applicants, the recruiters can go through the handful of potential candidates
+
+
+# Installation
+
+* Fork & Clone the repo
+```
+  git clone https://github.com/[yourname]/Mentr.me.git
+```
+
+* Navigate through the project
+```
+  cd Mentr.me
+```
+* Install all requirements
+  ``` 
+  pip install -r requirements.txt
+  ```
+  
+* Run :
+  ```
+  python3 main.py
+  ```
+  
+* Copy the localhost url (usually localhost:5000/) and paste in browser
+
+
+
+## The databases in the system
+
+1. User
+2. Question : Keeps track of all questions raised by a user
+3. Response : Keeps track of all response (the bidding part) given by  a user
+4. Assigned : Stores the details of all user who are assigned to a particular question 
+
+
+## File structure
+
+```
+| static
+
+   | layout.css
+
+| templates  Contains all the html files
+
+   | index.html
+   | register.html
+   | login.html
+   .....
+| Main.py : Contains all the python code    
+| db.sqlite3 : The database used is sqlite3
+| requirements.txt : contains the list of all dependencies to be installed
+| README.md
+
+```
