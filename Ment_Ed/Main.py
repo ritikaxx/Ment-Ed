@@ -60,7 +60,7 @@ class Assigned(db.Model):
     assignedName = db.Column(db.String(200))
 
 
-class Mentor(db.Model):
+class Recruiter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
     password = db.Column(db.String(50))
@@ -69,7 +69,14 @@ class Mentor(db.Model):
     image = db.Column(db.String(50))
     roles = db.Column(db.String(50))
 
-
+class Mentor(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(200))
+    password = db.Column(db.String(50))
+    company = db.Column(db.String(200))
+    credentials = db.Column(db.String(50))
+    image = db.Column(db.String(50))
+    roles = db.Column(db.String(50))
 
 class Interview(db.Model):
     id = db.Column(db.Integer, primary_key=True)
