@@ -60,7 +60,7 @@ class Assigned(db.Model):
     assignedName = db.Column(db.String(200))
 
 
-class Recruiter(db.Model):
+class Mentor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
     password = db.Column(db.String(50))
@@ -68,6 +68,7 @@ class Recruiter(db.Model):
     credentials = db.Column(db.String(50))
     image = db.Column(db.String(50))
     roles = db.Column(db.String(50))
+
 
 
 class Interview(db.Model):
@@ -86,6 +87,10 @@ class Interview(db.Model):
 ################################  REGISTER  LOGIN  LOGOUT ROUTES ###################################
 
 @app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'GET':
+        return render_template('homepage.html')
+        
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -122,7 +127,7 @@ def register():
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('username', None)
-    return redirect(url_for('login'))
+    return render_template('homepage.html')
 
 
 ###########Recruiter##################
@@ -162,8 +167,38 @@ def Rregister():
 def Rlogout():
     session.pop('username', None)
     print("session closed")
-    return redirect(url_for('login'))
+    return render_template('homepage.html')
 
+
+########### Mentor##################
+@app.route('/Mlogin', methods=['GET', 'POST'])
+def Mlogin():
+    if request.method == 'GET':
+        return render_template('Mlogin.html')
+    else:
+        username = request.form['username']
+        password = request.form['password']
+        data = Recruiter.query.filter_by(username=username,
+                                         password=password).first()
+        if data is not None:
+            session['user'] = data.id
+            print(session['user'])
+            return redirect(url_for('Rindex'))
+
+        return render_template('incorrectLogin.html')
+
+@app.route('/Mregister/', methods=['GET', 'POST'])
+def Mregister():
+    if request.method == 'POST':
+        new_mentor = Mentor(username=request.form['username'],
+                                  password=request.form['password'], company=request.form['company'],
+                                  credentials=request.form['credentials'], image=request.form['image'],
+                                  roles=request.form['roles'])
+
+        db.session.add(new_mentor)
+        db.session.commit()
+        return redirect(url_for('Mlogin'))
+    return render_template('Mregister.html')
 
 ######################################### CRUD Model ####################################
 
