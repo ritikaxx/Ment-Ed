@@ -4,7 +4,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
-
+<style>
+.modal-backdrop{
+display: none;
+}
+</style>
 <section id="team" class="pb-5" style="transform:translateY(-5%)">
     <div class="container">
 
@@ -59,7 +63,7 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="1" role="dialog"
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -79,7 +83,7 @@
                                             <input id="id" name="id" placeholder="{{i.id}}" style="width:30px"/>
                                         </div>
                                         <div class="col-4">
-                                            <input id="datepicker" name="date" width="170" placeholder="Pick the date"
+                                            <input class="datepicker" name="date" width="170" placeholder="Pick the date"
                                                    autocomplete="off"/>
                                         </div>
                                         <div class="col-1"></div>
@@ -118,24 +122,13 @@
     </div>
     </div>
 </section>
+
 <script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap'
-        });
-           $('.timepicker').timepicker({
-     });
-
-
-
-
-
-
-
-
-
-
-
-
+    $('.datepicker').datepicker({
+        uiLibrary: 'bootstrap'
+    });
+       $('.timepicker').timepicker({
+ });
 
 </script>
 

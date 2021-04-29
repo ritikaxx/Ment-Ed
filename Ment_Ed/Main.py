@@ -137,6 +137,7 @@ def logout():
     return render_template('homepage.html')
 
 
+
 ###########Recruiter##################
 
 @app.route('/Rlogin', methods=['GET', 'POST'])
@@ -176,6 +177,10 @@ def Rlogout():
     print("session closed")
     return render_template('homepage.html')
 
+@app.route('/homepage', methods=['GET', 'POST'])
+def homepage():
+    if request.method == 'GET':
+        return render_template('homepage.html')
 
 ########### Mentor##################
 @app.route('/Mlogin', methods=['GET', 'POST'])
