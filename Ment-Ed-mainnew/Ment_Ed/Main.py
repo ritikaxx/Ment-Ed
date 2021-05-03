@@ -11,14 +11,14 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SECRET_KEY'] = 'the random string'
-app.config['MAIL_DEFAULT_SENDER'] = '123456@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = 'mentedsupp@gmail.com'
 app.config['SECURITY_PASSWORD_SALT'] = 'my_precious_two'
 app.config['MAIL_SERVER']= 'smtp.gmail.com'
 app.config['MAIL_PORT']= 587
 app.config['MAIL_USE_SSL']= False
 app.config['MAIL_USE_TLS']= True
-app.config['MAIL_USERNAME'] = '123456@gmail.com'
-app.config['MAIL_PASSWORD'] = '******'
+app.config['MAIL_USERNAME'] = 'mentedsupp@gmail.com'
+app.config['MAIL_PASSWORD'] = 'NPt-Lp}h=JKzW5J}'
 
 db = SQLAlchemy(app)
 mail= Mail(app)
@@ -30,8 +30,8 @@ ts = URLSafeTimedSerializer(app.config["SECRET_KEY"])
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
-    password = db.Column(db.String(50))
     email = db.Column(db.String(50))
+    password = db.Column(db.String(50))
     typeOfAccount = db.Column(db.String(10))
     credentials = db.Column(db.String(50))
     image = db.Column(db.String(50))
@@ -42,7 +42,6 @@ class User(db.Model):
     github = db.Column(db.String(50))
     linkedin = db.Column(db.String(50))
     score = db.Column(db.Integer, default=100)
-
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -56,7 +55,6 @@ class Question(db.Model):
     askedby_name = db.Column(db.String(200))
     askedby_img = db.Column(db.String(200))
 
-
 class Response(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
@@ -64,7 +62,6 @@ class Response(db.Model):
     description = db.Column(db.String(200))
     pay = db.Column(db.Integer)
     questionID = db.Column(db.Integer, db.ForeignKey('question.id'))
-
 
 class Assigned(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -75,10 +72,10 @@ class Assigned(db.Model):
     questionName = db.Column(db.String(200))
     assignedName = db.Column(db.String(200))
 
-
 class Recruiter(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
+    email = db.Column(db.String(50))
     password = db.Column(db.String(50))
     company = db.Column(db.String(200))
     credentials = db.Column(db.String(50))
@@ -88,6 +85,7 @@ class Recruiter(db.Model):
 class Mentor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(200))
+    email = db.Column(db.String(50))
     password = db.Column(db.String(50))
     company = db.Column(db.String(200))
     credentials = db.Column(db.String(50))
@@ -106,8 +104,6 @@ class Interview(db.Model):
     username = db.Column(db.String(50))
     userabout = db.Column(db.String(50))
     recruitername = db.Column(db.String(50))
-
-
 ################################  REGISTER  LOGIN  LOGOUT ROUTES ###################################
 
 @app.route('/', methods=['GET', 'POST'])
@@ -140,11 +136,6 @@ def send_email(to, subject, template):
         sender=app.config['MAIL_DEFAULT_SENDER']
     )
     mail.send(msg)
-
-@app.route('/activate', methods=['GET', 'POST'])
-def activate():
-    if request.method == 'GET':
-        return render_template('activate.html')
 
 @app.route('/ConfirmEmail', methods=['GET', 'POST'])
 def ConfirmEmail():
@@ -218,16 +209,37 @@ def Rlogin():
 @app.route('/Rregister/', methods=['GET', 'POST'])
 def Rregister():
     if request.method == 'POST':
-        new_recruiter = Recruiter(username=request.form['username'],
+        new_recruiter = Recruiter(username=request.form['username'],email=request.form['email'],
                                   password=request.form['password'], company=request.form['company'],
                                   credentials=request.form['credentials'], image=request.form['image'],
                                   roles=request.form['roles'])
 
         db.session.add(new_recruiter)
         db.session.commit()
-        return redirect(url_for('Rlogin'))
+        subject = "Confirm your email"
+        token = ts.dumps(request.form['email'], salt='email-confirm-key')
+        confirm_url = url_for('confirm_email',token=token,_external=True)
+        template = render_template('/activate.html',confirm_url=confirm_url)
+        send_email(request.form['email'], subject, template)
+        return redirect(url_for('ConfirmEmail'))
     return render_template('Rregister.html')
 
+
+@app.route('/confirm/<token>')
+def r_confirm_email(token):
+    try:
+        email = ts.loads(token, salt="email-confirm-key", max_age=86400)
+    except:
+        abort(404)
+
+    user = Recruiter.query.filter_by(email=email).first_or_404()
+
+    user.email_confirmed = True
+
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(url_for('Rlogin'))
 
 @app.route('/Rlogout', methods=['GET', 'POST'])
 def Rlogout():
@@ -240,7 +252,7 @@ def homepage():
     if request.method == 'GET':
         return render_template('homepage.html')
 
-########### Mentor##################
+################################ Mentor ###############################
 @app.route('/Mlogin', methods=['GET', 'POST'])
 def Mlogin():
     if request.method == 'GET':
@@ -260,15 +272,36 @@ def Mlogin():
 @app.route('/Mregister/', methods=['GET', 'POST'])
 def Mregister():
     if request.method == 'POST':
-        new_mentor = Mentor(username=request.form['username'],
+        new_mentor = Mentor(username=request.form['username'],email=request.form['email'],
                                   password=request.form['password'], company=request.form['company'],
                                   credentials=request.form['credentials'], image=request.form['image'],
                                   roles=request.form['roles'])
 
         db.session.add(new_mentor)
         db.session.commit()
-        return redirect(url_for('Mlogin'))
+        subject = "Confirm your email"
+        token = ts.dumps(request.form['email'], salt='email-confirm-key')
+        confirm_url = url_for('confirm_email',token=token,_external=True)
+        template = render_template('/activate.html',confirm_url=confirm_url)
+        send_email(request.form['email'], subject, template)
+        return redirect(url_for('ConfirmEmail'))
     return render_template('Mregister.html')
+
+@app.route('/confirm/<token>')
+def m_confirm_email(token):
+    try:
+        email = ts.loads(token, salt="email-confirm-key", max_age=86400)
+    except:
+        abort(404)
+
+    user = Mentor.query.filter_by(email=email).first_or_404()
+
+    user.email_confirmed = True
+
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(url_for('Mlogin'))
 
 ######################################### CRUD Model ####################################
 
