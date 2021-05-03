@@ -11,14 +11,14 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SECRET_KEY'] = 'the random string'
-app.config['MAIL_DEFAULT_SENDER'] = 'saurabhs10899@gmail.com'
+app.config['MAIL_DEFAULT_SENDER'] = '123456@gmail.com'
 app.config['SECURITY_PASSWORD_SALT'] = 'my_precious_two'
 app.config['MAIL_SERVER']= 'smtp.gmail.com'
 app.config['MAIL_PORT']= 587
 app.config['MAIL_USE_SSL']= False
 app.config['MAIL_USE_TLS']= True
-app.config['MAIL_USERNAME'] = 'saurabhs10899@gmail.com'
-app.config['MAIL_PASSWORD'] = '10899saurabhs'
+app.config['MAIL_USERNAME'] = '123456@gmail.com'
+app.config['MAIL_PASSWORD'] = '******'
 
 db = SQLAlchemy(app)
 mail= Mail(app)
