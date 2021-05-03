@@ -1,14 +1,29 @@
 import time
-
+import os
+import smtplib, ssl
+from itsdangerous import URLSafeTimedSerializer
 from flask import Flask, render_template, request, redirect, session, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SECRET_KEY'] = 'the random string'
+app.config['MAIL_DEFAULT_SENDER'] = 'ritika.mvn@gmail.com'
+app.config['SECURITY_PASSWORD_SALT'] = 'my_precious_two'
+app.config['MAIL_SERVER']= 'smtp.gmail.com'
+app.config['MAIL_PORT']= 587
+app.config['MAIL_USE_SSL']= False
+app.config['MAIL_USE_TLS']= True
+app.config['MAIL_USERNAME'] = 'ritika.mvn@gmail.com'
+app.config['MAIL_PASSWORD'] = 'ritii8527'
+
 db = SQLAlchemy(app)
+mail= Mail(app)
+ts = URLSafeTimedSerializer(app.config["SECRET_KEY"])
+
 
 
 #################### All the databases ################################
@@ -16,6 +31,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
     password = db.Column(db.String(50))
+    email = db.Column(db.String(50))
     typeOfAccount = db.Column(db.String(10))
     credentials = db.Column(db.String(50))
     image = db.Column(db.String(50))
@@ -77,6 +93,7 @@ class Mentor(db.Model):
     credentials = db.Column(db.String(50))
     image = db.Column(db.String(50))
     roles = db.Column(db.String(50))
+    score = db.Column(db.Integer, default=100)
 
 class Interview(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -115,20 +132,56 @@ def login():
 
         return render_template('incorrectLogin.html')
 
+def send_email(to, subject, template):
+    msg = Message(
+        subject,
+        recipients=[to],
+        html=template,
+        sender=app.config['MAIL_DEFAULT_SENDER']
+    )
+    mail.send(msg)
+
+@app.route('/activate', methods=['GET', 'POST'])
+def activate():
+    if request.method == 'GET':
+        return render_template('activate.html')
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         new_user = User(username=request.form['username'],
-                        password=request.form['password'], typeOfAccount=request.form['typeOfAccount'],
+                        password=request.form['password'], email=request.form['email'],
+                         typeOfAccount=request.form['typeOfAccount'],
                         credentials=request.form['credentials'], institute=request.form['institute'],
-                        skills=request.form['skills'], image=request.form['image'], about=request.form['about'],
+                        skills=request.form['skills'], image=request.form['image'], 
+                        about=request.form['about'],
                         github=request.form['github'], linkedin=request.form['linkedin'])
 
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('login'))
+        subject = "Confirm your email"
+        token = ts.dumps(request.form['email'], salt='email-confirm-key')
+        confirm_url = url_for('confirm_email',token=token,_external=True)
+        template = render_template('/activate.html',confirm_url=confirm_url)
+        send_email(request.form['email'], subject, template)
+        return redirect(url_for('activate'))
     return render_template('register.html')
+
+@app.route('/confirm/<token>')
+def confirm_email(token):
+    try:
+        email = ts.loads(token, salt="email-confirm-key", max_age=86400)
+    except:
+        abort(404)
+
+    user = User.query.filter_by(email=email).first_or_404()
+
+    user.email_confirmed = True
+
+    db.session.add(user)
+    db.session.commit()
+
+    return redirect(url_for('login'))
 
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -190,12 +243,12 @@ def Mlogin():
     else:
         username = request.form['username']
         password = request.form['password']
-        data = Recruiter.query.filter_by(username=username,
+        data = Mentor.query.filter_by(username=username,
                                          password=password).first()
         if data is not None:
             session['user'] = data.id
             print(session['user'])
-            return redirect(url_for('Rindex'))
+            return redirect(url_for('Mindex'))
 
         return render_template('incorrectLogin.html')
 
@@ -502,6 +555,20 @@ def CancelInterview():
     db.session.commit()
     return redirect(url_for('Rindex'))
 
+######################################### MENTOR ####################################
+
+
+@app.route('/Mindex')
+def Mindex():
+    user_id = session['user']
+    username = Mentor.query.get(session['user']).username
+    today = time.strftime("%m/%d/%Y")
+    showQuestion = Question.query.order_by(desc(Question.id))
+    rank_user = Mentor.query.order_by(desc(Mentor.score))
+    interview = Interview.query.filter_by(user_id=user_id).filter_by(status='Confirmed').order_by(Interview.date).all()
+    return render_template('Mindex.html', showQuestion=showQuestion, rank_user=rank_user, interview=interview,
+                           today=today)
+
 
 ######################################### MAIN ####################################
 
@@ -509,3 +576,7 @@ def CancelInterview():
 if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)
+
+
+
+                           
