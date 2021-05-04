@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ment_Ed</title>
+    <link rel="stylesheet" href="/static/layout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md  navbar-dark shadow-lg " style="font-family:calibri; background-color:#644867; height: 70px;">
+        <a class="navbar-brand align-content-between blockquote border" href=""><strong><h1>Ment_Ed</strong></h1></a>&nbsp; 
+    </nav>
+<br><br>
+<div class="row">
+    <div class="col-3 " style="padding-left: 50px;">
+        <h1 ><strong>Email Confirmation</strong></h1><br><br>
+        <h2><strong>Your Registration is Complete</h2></strong></h2>
+        <h4>Check your mail for email confirmation/activation link</h4><br>
+        <button type="submit" class="btn btn-dark " style="background: #644867;">
+            <a href="/login" style="color:white;text-decoration:none"> Login here</a>
+        </button>
+    </div>
+    <div class="col-2">
+        <img src="https://sendgrid.com/wp-content/uploads/2019/12/confirmation-email-examples.png" alt="" height="400">
+    </div>
+
+</div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a92e2a8260.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- If this is not working, change style in the stylus chrome extension -->
+<script src="https://widget.flowxo.com/embed.js" data-fxo-widget="eyJ0aGVtZSI6IiM2NDQ4NjciLCJ3ZWIiOnsiYm90SWQiOiI2MDU4OTk0YTQ4MjQ4ZjZiNjA3MzNjZGIiLCJ0aGVtZSI6IiM2NDQ4NjciLCJsYWJlbCI6IlRhbGsgV2l0aCBJdnkuLi4ifSwid2VsY29tZVRleHQiOiJUYWxrIFdpdGggSXZ5Li4uIiwicG9wdXBIZWlnaHQiOiI2MCUifQ==" async defer></script>
+<script>
+    function delete_flash(flash){
+        console.log(flash)
+        $(flashMessage).remove()
+    }
+
+  $('#flashMessage').show().delay(50).fadeIn(200).delay(2000).fadeOut(400)
+
+
+
+
+
+
+</script>
+</html>
