@@ -55,6 +55,18 @@ class Question(db.Model):
     askedby_name = db.Column(db.String(200))
     askedby_img = db.Column(db.String(200))
 
+class Project(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project = db.Column(db.String(50))
+    shortdescription = db.Column(db.String(200))
+    detaileddescription = db.Column(db.String(200))
+    pay = db.Column(db.Integer)
+    tags=db.Column(db.String(50))
+    status = db.Column(db.Integer, default='Pending')
+    askedby_id = db.Column(db.Integer, db.ForeignKey('mentor.id'))
+    askedby_name = db.Column(db.String(200))
+    askedby_img = db.Column(db.String(200))
+
 class Response(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
@@ -63,6 +75,14 @@ class Response(db.Model):
     pay = db.Column(db.Integer)
     questionID = db.Column(db.Integer, db.ForeignKey('question.id'))
 
+class Request(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50))
+    image = db.Column(db.String(50))
+    description = db.Column(db.String(200))
+    pay = db.Column(db.Integer)
+    projectID = db.Column(db.Integer, db.ForeignKey('project.id'))
+
 class Assigned(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     createdbyId = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -70,6 +90,15 @@ class Assigned(db.Model):
     assignedto_ID = db.Column(db.Integer, db.ForeignKey('user.id'))
     # To display the name of user and question in history section
     questionName = db.Column(db.String(200))
+    assignedName = db.Column(db.String(200))
+
+class Massigned(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    createdbyId = db.Column(db.Integer, db.ForeignKey('mentor.id'))
+    projectID = db.Column(db.Integer, db.ForeignKey('project.id'))
+    assignedto_ID = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # To display the name of user and question in history section
+    projectName = db.Column(db.String(200))
     assignedName = db.Column(db.String(200))
 
 class Recruiter(db.Model):
@@ -104,6 +133,8 @@ class Interview(db.Model):
     username = db.Column(db.String(50))
     userabout = db.Column(db.String(50))
     recruitername = db.Column(db.String(50))
+
+
 ################################  REGISTER  LOGIN  LOGOUT ROUTES ###################################
 
 @app.route('/', methods=['GET', 'POST'])
@@ -302,6 +333,11 @@ def m_confirm_email(token):
     db.session.commit()
 
     return redirect(url_for('Mlogin'))
+
+@app.route('/Mlogout', methods=['GET', 'POST'])
+def Mlogout():
+    session.pop('username', None)
+    return render_template('homepage.html')
 
 ######################################### CRUD Model ####################################
 
@@ -602,11 +638,107 @@ def Mindex():
     username = Mentor.query.get(session['user']).username
     today = time.strftime("%m/%d/%Y")
     showQuestion = Question.query.order_by(desc(Question.id))
+    showProject = Project.query.order_by(desc(Project.id))
     rank_user = Mentor.query.order_by(desc(Mentor.score))
     interview = Interview.query.filter_by(user_id=user_id).filter_by(status='Confirmed').order_by(Interview.date).all()
-    return render_template('Mindex.html', showQuestion=showQuestion, rank_user=rank_user, interview=interview,
+    return render_template('Mindex.html',showQuestion=showQuestion, showProject=showProject, rank_user=rank_user, interview=interview,
                            today=today)
 
+# Route to add a new project
+@app.route('/Madd', methods=['GET', 'POST'])
+def Madd():
+    if request.method == 'POST':
+        user_id = session['user']
+        getTagsArrays=request.form.getlist('tags')
+        t=''
+        for eachTag in getTagsArrays:
+            t += "      "
+            t += eachTag
+            t += "   |   "
+        print('getTagsArrays',getTagsArrays, 'eachTag',t)
+        print(user_id)
+        new_project = Project( project=request.form['project'],
+                                shortdescription=request.form['shortdescription'],
+                                detaileddescription=request.form['detaileddescription'],
+                                pay=request.form['pay'], tags=t, askedby_id=user_id,
+                                askedby_name=Mentor.query.get(user_id).username,
+                                askedby_img=Mentor.query.get(user_id).image)
+        flash("New question has been succesfully added")
+        db.session.add(new_project)
+        db.session.commit()
+        return redirect(url_for('Mindex'))
+
+    else:
+        return render_template('AddProject.html')
+
+# In the Mindex.html file, the entire project db will be displayed
+# When the mentor clicks on view more btn, they would be redirected to the ParticularProject url
+@app.route('/ParticularProject', methods=['GET', 'POST'])
+def ParticularProject():
+    if request.method == 'POST':
+        id = request.args['projectid']
+        username = Mentor.query.get(session['user']).username
+        image=Mentor.query.get(session['user']).image
+        new_request = Request(username=username,
+                                description=request.form['description'],
+                                pay=request.form['pay'], projectID=id, image=image)
+        db.session.add(new_request)
+        db.session.commit()
+        return redirect(url_for('index'))
+    else:
+        args = request.args
+        
+        projectid = Project.query.get(args['projectid'])
+        # To check whether the user view the q is same as the user who raised that question. If True, then display assign tag
+        isSamePerson = args['user']
+        
+        user = projectid.askedby_id
+        img = Mentor.query.get(user).image
+        username = Mentor.query.get(user).username
+        request = Request.query.filter_by(projectID=projectid.id).all()
+        
+        return render_template('ParticularProject.html', project=projectid, username=username, img=img,
+                               request=request,
+                               isSamePerson=isSamePerson)
+
+# Shows the list of tasks assigned to and by a particular user
+@app.route('/Mhistory')
+def Mhistory():
+    mentor_id = session['user']
+    askedByme = Massigned.query.filter_by(createdbyId=mentor_id).all()
+    toBeDoneByMe = Massigned.query.filter_by(assignedto_ID=mentor_id).all()
+    myProject = Project.query.filter_by(askedby_id=mentor_id).all()
+    print(myProject)
+    return render_template('Mhistory.html', askedByme=askedByme, toBeDoneByMe=toBeDoneByMe, myProject=myProject,
+                           mentor_id=mentor_id)
+
+@app.route('/Mjobs', methods=['POST', 'GET'])
+def Mjobs():
+    mentorid = session['user']
+    mentor = Mentor.query.filter_by(id=mentorid).one()
+    recruiter = Recruiter.query.all()
+    print(recruiter)
+    student = User.query.all()
+    print(student)
+    if request.method == 'POST':
+        print('post')
+
+        return redirect(url_for('Mindex'))
+    return render_template('Mjobs.html', mentor=mentor, recruiter=recruiter, student=student)
+
+@app.route('/MscoreBoard')
+def MscoreBoard():
+    rank_mentor = Mentor.query.order_by(desc(Mentor.score))
+    return render_template('MscoreBoard.html', rank_mentor=rank_mentor)
+
+
+# Shows the profile of the mentor who is currently logged in
+@app.route('/Mprofile')
+def Mprofile():
+    mentorid = session['user']
+    print('mentorid is', mentorid)
+    Mprofile = Mentor.query.filter_by(id=mentorid).one()
+    return render_template('Mprofile.html', i=Mprofile)
 
 ######################################### MAIN ####################################
 

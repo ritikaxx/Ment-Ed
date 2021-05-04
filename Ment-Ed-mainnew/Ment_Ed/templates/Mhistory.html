@@ -18,13 +18,13 @@
 
                     </video>
 
-                    {% for i in myQuestion %}
+                    {% for i in myProject %}
                     <div class="row">
                         <div class="col-12">
                             <br>
                             <h5>{{ loop.index }}.
                                 <a href="{{ url_for('ParticularQuestion', questionid=i.id, user=True) }}"
-                                   style="color:black !important"> {{ i.question }} </a>
+                                   style="color:black !important"> {{ i.project }} </a>
                             </h5>
 
                             <small class="text-muted">{{i.shortdescription }}</small> <br><br>
