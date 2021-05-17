@@ -67,6 +67,51 @@ class Project(db.Model):
     askedby_name = db.Column(db.String(200))
     askedby_img = db.Column(db.String(200))
 
+
+class Certify(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    certificate = db.Column(db.String(50))
+    link = db.Column(db.String(200))
+    askedby_id = db.Column(db.Integer, db.ForeignKey('mentor.id'))
+    askedby_name = db.Column(db.String(200))
+    askedby_img = db.Column(db.String(200))
+
+class SCertify(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    certificate = db.Column(db.String(50))
+    link = db.Column(db.String(200))
+    askedby_id = db.Column(db.Integer, db.ForeignKey('mentor.id'))
+    askedby_name = db.Column(db.String(200))
+    askedby_img = db.Column(db.String(200))
+
+
+class Allresume(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    link = db.Column(db.String(200))
+    
+class ProfProject(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project = db.Column(db.String(50))
+    shortdescription = db.Column(db.String(200))
+    link = db.Column(db.String(200))
+    pay = db.Column(db.Integer)
+    tags=db.Column(db.String(50))
+    askedby_id = db.Column(db.Integer, db.ForeignKey('mentor.id'))
+    askedby_name = db.Column(db.String(200))
+    askedby_img = db.Column(db.String(200))
+
+class SProfProject(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    project = db.Column(db.String(50))
+    shortdescription = db.Column(db.String(200))
+    link = db.Column(db.String(200))
+    pay = db.Column(db.Integer)
+    tags=db.Column(db.String(50))
+    askedby_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    askedby_name = db.Column(db.String(200))
+    askedby_img = db.Column(db.String(200))
+
+
 class Response(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
@@ -74,6 +119,7 @@ class Response(db.Model):
     description = db.Column(db.String(200))
     pay = db.Column(db.Integer)
     questionID = db.Column(db.Integer, db.ForeignKey('question.id'))
+
 
 class Request(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -134,7 +180,17 @@ class Interview(db.Model):
     userabout = db.Column(db.String(50))
     recruitername = db.Column(db.String(50))
 
-
+class Minterview(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    status = db.Column(db.String(50), default='Pending')
+    date = db.Column(db.Integer)
+    time = db.Column(db.Integer)
+    mentor_id = db.Column(db.Integer, db.ForeignKey('mentor.id'))
+    recruiter_id = db.Column(db.Integer, db.ForeignKey('recruiter.id'))
+    # To display the name of user and question in history section
+    username = db.Column(db.String(50))
+    usercompany = db.Column(db.String(50))
+    recruitername = db.Column(db.String(50))
 ################################  REGISTER  LOGIN  LOGOUT ROUTES ###################################
 
 @app.route('/', methods=['GET', 'POST'])
@@ -393,7 +449,7 @@ def ParticularQuestion():
         id = request.args['questionid']
         username = User.query.get(session['user']).username
         image=User.query.get(session['user']).image
-        print('question id is', id)
+        
         new_response = Response(username=username,
                                 description=request.form['description'],
                                 pay=request.form['pay'], questionID=id, image=image)
@@ -411,6 +467,7 @@ def ParticularQuestion():
         img = User.query.get(user).image
         username = User.query.get(user).username
         response = Response.query.filter_by(questionID=questionid.id).all()
+        
         print("response is", response)
         return render_template('ParticularQuestion.html', question=questionid, username=username, img=img,
                                response=response,
@@ -532,7 +589,64 @@ def profile():
     userid = session['user']
     print('userid is', userid)
     Profile = User.query.filter_by(id=userid).one()
-    return render_template('profile.html', i=Profile)
+    Sprofile_project = SProfProject.query.order_by(desc(SProfProject.id))
+    Scertificate = SCertify.query.order_by(desc(SCertify.id))
+    s_resume = Allresume.query.order_by(desc(Allresume.id))
+    return render_template('profile.html', i=Profile, Sprofile_project=Sprofile_project, Scertificate=Scertificate, s_resume = s_resume)
+
+# Route to add a new project
+@app.route('/SProfileProject', methods=['GET', 'POST'])
+def SProfileProject():
+    if request.method == 'POST':
+        user_id = session['user']
+        getTagsArrays=request.form.getlist('tags')
+        t=''
+        for eachTag in getTagsArrays:
+            t += "      "
+            t += eachTag
+            t += "   |   "
+       
+        Sprofile_project = SProfProject( project=request.form['project'],
+                                shortdescription=request.form['shortdescription'],
+                                link=request.form['link'],
+                                tags=t, askedby_id=user_id,
+                                askedby_name=User.query.get(user_id).username,
+                                askedby_img=User.query.get(user_id).image)
+        
+        db.session.add(Sprofile_project)
+        db.session.commit()
+        return redirect(url_for('profile'))
+
+    else:
+        return render_template('SProfileProject.html')
+
+# Route to add certificates
+@app.route('/Scertificates', methods=['GET', 'POST'])
+def Scertificates():
+    if request.method == 'POST':
+        user_id = session['user']
+        Scertificate = SCertify( certificate=request.form['certificate'],
+                                link=request.form['link'],
+                                askedby_id=user_id)
+        
+        db.session.add(Scertificate)
+        db.session.commit()
+        return redirect(url_for('profile'))
+
+    else:
+        return render_template('Scertificates.html')
+
+# Route to upload resume
+@app.route('/Sresume', methods=['GET', 'POST'])
+def Sresume():
+    if request.method == 'POST':
+        user_id = session['user']
+        resume = Allresume(link=request.form['link'])       
+        db.session.add(resume)
+        db.session.commit()
+        return redirect(url_for('profile'))
+    else:
+        return render_template('Sresume.html')
 
 
 # Shows the list of tasks assigned to and by a particular user
@@ -570,7 +684,7 @@ def jobs():
     recruiter = Recruiter.query.all()
     print(recruiter)
     if request.method == 'POST':
-        print('post')
+        
 
         return redirect(url_for('index'))
     return render_template('jobs.html', user=user, recruiter=recruiter)
@@ -580,7 +694,7 @@ def jobs():
 def submitinterview():
     new_item = Interview(user_id=request.args['uid'], username=User.query.get(session['user']).username,
                          recruiter_id=request.args['rid'], recruitername=request.args['recruitername'],
-                         userabout=User.query.get(session['user']).about)
+                         userabout=User.query.get(session['user']).about, link=Allresume.query.get(session['user'].link))
     db.session.add(new_item)
     db.session.commit()
     return redirect(url_for('index'))
@@ -606,6 +720,7 @@ def Rindex():
 def Rnotifications():
     rid = session['user']
     print(Interview.query.all())
+    
     allInterview = Interview.query.filter_by(recruiter_id=rid).filter_by(status='Pending').all()
     print(allInterview)
     if request.method == 'POST':
@@ -629,6 +744,25 @@ def CancelInterview():
     db.session.commit()
     return redirect(url_for('Rindex'))
 
+
+@app.route('/hire')
+def hire():
+    rid = session['user']
+    username = Recruiter.query.get(session['user']).username
+    flash("welcome {}".format(username))
+    today = time.strftime("%m/%d/%Y")
+    mentor_interview = Minterview.query.filter_by(recruiter_id=rid).filter_by(status='Confirmed').order_by(Minterview.date).all()
+
+    return render_template('hire.html', mentor_interview=mentor_interview, today=today)
+
+@app.route('/McancelInterview')
+def McancelInterview():
+    id = int(request.args['id'])
+    
+    CancelAppointment = Minterview.query.filter_by(id=id).one()
+    CancelAppointment.status = 'Denied'
+    db.session.commit()
+    return redirect(url_for('Mentors'))
 ######################################### MENTOR ####################################
 
 
@@ -670,36 +804,37 @@ def Madd():
 
     else:
         return render_template('AddProject.html')
-
 # In the Mindex.html file, the entire project db will be displayed
 # When the mentor clicks on view more btn, they would be redirected to the ParticularProject url
 @app.route('/ParticularProject', methods=['GET', 'POST'])
 def ParticularProject():
     if request.method == 'POST':
-        id = request.args['projectid']
+        pid = int(request.args['pid'])
         username = Mentor.query.get(session['user']).username
         image=Mentor.query.get(session['user']).image
-        new_request = Request(username=username,
+        print('question id is', pid)
+        new_request = Mresponse(username=username,
                                 description=request.form['description'],
-                                pay=request.form['pay'], projectID=id, image=image)
+                                pay=request.form['pay'], questionID=pid, image=image)
         db.session.add(new_request)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('Mindex'))
     else:
         args = request.args
-        
-        projectid = Project.query.get(args['projectid'])
+        print('args in q url is', args)
+        pid = Project.query.get(args['pid'])
         # To check whether the user view the q is same as the user who raised that question. If True, then display assign tag
         isSamePerson = args['user']
-        
-        user = projectid.askedby_id
+        print(isSamePerson)
+        user = pid.askedby_id
         img = Mentor.query.get(user).image
         username = Mentor.query.get(user).username
-        request = Request.query.filter_by(projectID=projectid.id).all()
-        
-        return render_template('ParticularProject.html', project=projectid, username=username, img=img,
+        request = Mresponse.query.filter_by(projectID=pid.id).all()
+        print("response is", response)
+        return render_template('ParticularProject.html', project=pid, username=username, img=img,
                                request=request,
                                isSamePerson=isSamePerson)
+
 
 # Shows the list of tasks assigned to and by a particular user
 @app.route('/Mhistory')
@@ -726,6 +861,29 @@ def Mjobs():
         return redirect(url_for('Mindex'))
     return render_template('Mjobs.html', mentor=mentor, recruiter=recruiter, student=student)
 
+@app.route('/Msubmitinterview')
+def Msubmitinterview():
+    new_interview = Minterview(mentor_id=request.args['uid'], username=Mentor.query.get(session['user']).username,
+                         recruiter_id=request.args['rid'], recruitername=request.args['recruitername'],
+                         usercompany=Mentor.query.get(session['user']).company)
+    db.session.add(new_interview)
+    db.session.commit()
+    return redirect(url_for('Mindex'))
+
+@app.route('/Mentors', methods=['POST', 'GET'])
+def Mentors():
+    rid = session['user']
+    allMinterview = Minterview.query.filter_by(recruiter_id=rid).filter_by(status='Pending').all()
+    if request.method == 'POST':
+        id = request.form['id']
+        confirm_appointment = Minterview.query.filter_by(id=id).one()
+        confirm_appointment.status = 'Confirmed'
+        confirm_appointment.date = request.form['date']
+        confirm_appointment.time = request.form['time']
+        db.session.commit()
+        return redirect(url_for('Rindex'))
+    return render_template('Mentors.html', allMinterview=allMinterview)
+
 @app.route('/MscoreBoard')
 def MscoreBoard():
     rank_mentor = Mentor.query.order_by(desc(Mentor.score))
@@ -738,7 +896,55 @@ def Mprofile():
     mentorid = session['user']
     print('mentorid is', mentorid)
     Mprofile = Mentor.query.filter_by(id=mentorid).one()
-    return render_template('Mprofile.html', i=Mprofile)
+    profile_project = ProfProject.query.order_by(desc(ProfProject.id))
+    certificate = Certify.query.order_by(desc(Certify.id))
+    return render_template('Mprofile.html', i=Mprofile, profile_project=profile_project, certificate=certificate)
+
+# Route to add a new project
+@app.route('/ProfileProject', methods=['GET', 'POST'])
+def ProfileProject():
+    if request.method == 'POST':
+        user_id = session['user']
+        getTagsArrays=request.form.getlist('tags')
+        t=''
+        for eachTag in getTagsArrays:
+            t += "      "
+            t += eachTag
+            t += "   |   "
+        print('getTagsArrays',getTagsArrays, 'eachTag',t)
+        print(user_id)
+        profile_project = ProfProject( project=request.form['project'],
+                                shortdescription=request.form['shortdescription'],
+                                link=request.form['link'],
+                                tags=t, askedby_id=user_id,
+                                askedby_name=Mentor.query.get(user_id).username,
+                                askedby_img=Mentor.query.get(user_id).image)
+        flash("New question has been succesfully added")
+        db.session.add(profile_project)
+        db.session.commit()
+        return redirect(url_for('Mprofile'))
+
+    else:
+        return render_template('ProfileProject.html')
+
+# Route to add certificates
+@app.route('/certificates', methods=['GET', 'POST'])
+def certificates():
+    if request.method == 'POST':
+        user_id = session['user']
+        certificate = Certify( certificate=request.form['certificate'],
+                                link=request.form['link'],
+                                askedby_id=user_id,
+                                askedby_name=Mentor.query.get(user_id).username,
+                                askedby_img=Mentor.query.get(user_id).image)
+        
+        db.session.add(certificate)
+        db.session.commit()
+        return redirect(url_for('Mprofile'))
+
+    else:
+        return render_template('certificates.html')
+
 
 ######################################### MAIN ####################################
 

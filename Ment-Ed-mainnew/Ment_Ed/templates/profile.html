@@ -97,7 +97,88 @@
 
 
                     <br><br>
+                    <a href="/SProfileProject"><button type="button" class="btn btn-dark" style="background-color:#644867; ">
+                        Add Projects
+                    </button></a>
+                    <a href="/Scertificates"><button type="button" class="btn btn-dark" style="background-color:#644867; ">
+                        Add Certificates!
+                    </button></a>
+                    <a href="/Sresume"><button type="button" class="btn btn-dark" style="background-color:#644867; float: right;">
+                        Add Resume
+                    </button></a>
+<br>
+<br>
+                    <h4>Take a look at my projects!</h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-1" style="margin-right:3%">
+                        </div>
+                        <div class="col-12">
+                            <div class="homeDiv">
+                                {% for i in Sprofile_project %}
+                                
+                                <div class="row"
+                                     style="box-shadow: 0 8px 16px rgba(0, 0, 0, .1); background:#fff; padding:2%; border-radius:1%">
+                                    <div class="col-12">
+                                        
+                                        <b style=" font-size:19px" class="text-color">{{ i.project }}</b>
+                                        <br>
+                                        <span style="color:#495057;font-size:16px"> {{i.shortdescription }}</span>
+                                       <br>
+                                        <a href="{{i.link }}" target="_blank">Checkout my project! <span style="font-size:16px"> </span></a>
+                                        <br>
+                                        <span class="badge badge-pill" style="background-color:#e9ecef;font-size:14px">{{i.tags}}</span>
+                                        
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                                {% endfor %}
+                    
+                                
+                    
+                                
+                            </div>
+                        </div>
+                        <div></div>
+                        
+                    </div>
+                    <br>
 
+                    <h4>Licenses and Certifications</h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-1" style="margin-right:3%">
+                        </div>
+                        <div class="col-12">
+                            <div class="homeDiv">
+                                {% for i in Scertificate %}
+                                
+                                <div class="row"
+                                     style="box-shadow: 0 8px 16px rgba(0, 0, 0, .1); background:#fff; padding:2%; border-radius:1%">
+                                    <div class="col-12">
+                                        
+                                        <b style=" font-size:19px" class="text-color">{{ i.certificate }}</b>
+                                        <br>
+                                        
+                                        <a href="{{i.link }}" target="_blank">See credential! <span style="font-size:16px"> </span></a>
+                                        <br>
+                                        <span class="badge badge-pill" style="background-color:#e9ecef;font-size:14px">{{i.tags}}</span>
+                                        
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                                {% endfor %}
+                    
+                                
+                    
+                                
+                            </div>
+                        </div>
+                        <div></div>
+                        
+                    </div>
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -163,7 +244,7 @@
 
                 </div>
             </div>
-
+            
 
         </div>
 

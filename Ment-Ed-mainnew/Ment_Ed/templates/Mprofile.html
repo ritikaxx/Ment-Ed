@@ -39,7 +39,7 @@
                         <h3 class="mb-0">About</h3>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12 mb-2" style="padding:2%">
+                        <div class="col-lg-12 mb-2" >
                             {{i.about}}
                             Mentor at Vellore Institue of Technology, looking for jobs and interns!
                         </div>
@@ -60,27 +60,96 @@
 
                             <br> <br>
                             <br> <br>
-                            
+                            <a href="/ProfileProject"><button type="button" class="btn btn-dark" style="background-color:#644867; ">
+                                Add Projects
+                            </button></a>
+                            <a href="/certificates"><button type="button" class="btn btn-dark" style="background-color:#644867; ">
+                                Add Certificates!
+                            </button></a>
 
                         </div>
                         
                         <div class="col-lg-4">
 
 <!--                            Credential <br><img src="{{ i.credentials }}" alt="" width="400"><br>-->
-                            <br><img src="../static/about.png" alt="" width="400" height="380"><br>
+                            <br><img src="../static/about.png" alt="" width="350" height="350" style="position: absolute; left: 200px;"><br>
                         </div>
                     </div>
-
-
+                    <br><br><br><br>
+                    <h4>Take a look at my projects!</h4>
                     <br>
-
-
-                    <br><br>
-
-
+                    <div class="row">
+                        <div class="col-1" style="margin-right:3%">
+                        </div>
+                        <div class="col-12">
+                            <div class="homeDiv">
+                                {% for i in profile_project %}
+                                
+                                <div class="row"
+                                     style="box-shadow: 0 8px 16px rgba(0, 0, 0, .1); background:#fff; padding:2%; border-radius:1%">
+                                    <div class="col-12">
+                                        
+                                        <b style=" font-size:19px" class="text-color">{{ i.project }}</b>
+                                        <br>
+                                        <span style="color:#495057;font-size:16px"> {{i.shortdescription }}</span>
+                                       <br>
+                                        <a href="{{i.link }}" target="_blank">Checkout my project! <span style="font-size:16px"> </span></a>
+                                        <br>
+                                        <span class="badge badge-pill" style="background-color:#e9ecef;font-size:14px">{{i.tags}}</span>
+                                        
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                                {% endfor %}
+                    
+                                
+                    
+                                
+                            </div>
+                        </div>
+                        <div></div>
+                        
+                    </div>
+                    <br>
+                    <h4>Licenses and Certifications</h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-1" style="margin-right:3%">
+                        </div>
+                        <div class="col-12">
+                            <div class="homeDiv">
+                                {% for i in certificate %}
+                                
+                                <div class="row"
+                                     style="box-shadow: 0 8px 16px rgba(0, 0, 0, .1); background:#fff; padding:2%; border-radius:1%">
+                                    <div class="col-12">
+                                        
+                                        <b style=" font-size:19px" class="text-color">{{ i.certificate }}</b>
+                                        <br>
+                                        
+                                        <a href="{{i.link }}" target="_blank">See credential! <span style="font-size:16px"> </span></a>
+                                        <br>
+                                        <span class="badge badge-pill" style="background-color:#e9ecef;font-size:14px">{{i.tags}}</span>
+                                        
+                                        <br>
+                                    </div>
+                                </div>
+                                <br>
+                                {% endfor %}
+                    
+                                
+                    
+                                
+                            </div>
+                        </div>
+                        <div></div>
+                        
+                    </div>
                 </div>
             </div>
-
+            
+            
 
         </div>
 
@@ -88,4 +157,7 @@
 </div>
 
 
+
 {% endblock%}
+
+
