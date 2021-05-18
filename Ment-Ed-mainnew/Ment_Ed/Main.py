@@ -589,8 +589,8 @@ def profile():
     userid = session['user']
     print('userid is', userid)
     Profile = User.query.filter_by(id=userid).one()
-    Sprofile_project = SProfProject.query.order_by(desc(SProfProject.id))
-    Scertificate = SCertify.query.order_by(desc(SCertify.id))
+    Sprofile_project = SProfProject.query.filter_by(askedby_id=userid).all()
+    Scertificate = SCertify.query.filter_by(askedby_id=userid).all()
     s_resume = Allresume.query.order_by(desc(Allresume.id))
     return render_template('profile.html', i=Profile, Sprofile_project=Sprofile_project, Scertificate=Scertificate, s_resume = s_resume)
 
@@ -694,7 +694,7 @@ def jobs():
 def submitinterview():
     new_item = Interview(user_id=request.args['uid'], username=User.query.get(session['user']).username,
                          recruiter_id=request.args['rid'], recruitername=request.args['recruitername'],
-                         userabout=User.query.get(session['user']).about, link=Allresume.query.get(session['user'].link))
+                         userabout=User.query.get(session['user']).about)
     db.session.add(new_item)
     db.session.commit()
     return redirect(url_for('index'))
