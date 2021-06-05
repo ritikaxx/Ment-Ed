@@ -43,9 +43,6 @@ place.
 additional source of income and a chance to help their mentees.
 3. Fast recruitment process as recruiters can shortlist top candidate.
 
-# MAJOR CONTRIBUTIONS-
-• Homepage for login/registration of student, mentors/employees and
-recruiters and the registered information is stored in a database.
 
 # USER INTERACTION / MAIN WEBPAGE
 1- STUDENT
