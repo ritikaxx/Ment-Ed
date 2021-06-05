@@ -74,14 +74,11 @@ with them. Hire mentors based on their skills.
 
   git clone https://github.com/[yourname]/Mentr.me.git
   
-2)Navigate through the project
-
-  cd Mentr.me
-3)Install all requirements
+2)Install all requirements
 
 pip install -r requirements.txt
 
-4)Run :
+3)Run :
 
 python3 main.py
 
