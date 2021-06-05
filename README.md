@@ -1,18 +1,3 @@
-# MOTIVATION-
-1. The recent COVID pandemic has disrupted many sectors, especially the
-educational and industrial sectors. The enormous number of layoffs due to
-COVID19 and difficulties faced by students due to the closing down of their
-institutes inspired us to do something about providing users with the best
-opportunities virtually.
-2. A lot of employers have lost their job due to the recent COVID pandemic. They
-spend hours surfing the web to find the right job and to get an additional
-source of income. This lockdown also provides them ample time to give back
-to society by helping the younger students out there and earn money.
-3. Students find it difficult during lockdown to have proper mentorship regarding
-studies and they spend a lot of time on internet finding the right resources
-and solutions even for a small issue. It would be a great help for students to
-get a mentor for helping them to develop skills and project.
-
 # PROBLEM STATEMENT-
 1- Our E-learning portal gives students an opportunity to connect to mentors
 from different parts of the world and to learn from their experiences. It will
