@@ -36,13 +36,6 @@ openings in their firm.
 Employer community, Recruiter community and a common platform to
 connect all three.
 
-# BUSINESS ASPECT-
-1. This will connect all three students, mentors and recruiter at a single
-place.
-2. Students will get their mentors easily and fast.3. Effective Employee Onboarding :Mentors/ex employers can get an
-additional source of income and a chance to help their mentees.
-3. Fast recruitment process as recruiters can shortlist top candidate.
-
 
 # USER INTERACTION / MAIN WEBPAGE
 1- STUDENT
