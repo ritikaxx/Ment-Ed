@@ -58,7 +58,7 @@ connect with our top-performing candidates and set one to one interview
 with them. Hire mentors based on their skills.
 
 
-# Strting The Application
+# Starting The Application
 
 1)Fork & Clone the repo
 
