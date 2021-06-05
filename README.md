@@ -71,15 +71,20 @@ with them. Hire mentors based on their skills.
 # Strting The Application
 
 1)Fork & Clone the repo
+
   git clone https://github.com/[yourname]/Mentr.me.git
   
 2)Navigate through the project
+
   cd Mentr.me
 3)Install all requirements
+
 pip install -r requirements.txt
 
 4)Run :
+
 python3 main.py
+
 Copy the localhost url (usually localhost:5000/) and paste in browser
 
 
