@@ -62,7 +62,7 @@ with them. Hire mentors based on their skills.
 
 1)Fork & Clone the repo
 
-  git clone https://github.com/[yourname]/Mentr.me.git
+  git clone https://github.com/[yourname]/Ment-Ed.git
   
 2)Install all requirements
 
